@@ -1,0 +1,52 @@
+<!-- index.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Mi APP</title>
+    </head>
+    <body>
+        <h1>Que la fuerza te acompañe</h1>
+
+        <form action="/citas" method="POST">
+            <input type="text" placeholder="nombre" name="name">
+            <input type="text" placeholder="cita" name="quote">
+            <button type="submit">Mandar</button>
+        </form>
+
+
+        <h2>Citas</h2>
+
+        <ul class="quotes">
+        <!-- Loop through the citas -->
+        <% for(var i = 0; i < citas.length; i++) {%>
+            <li class="quote">
+                <!-- Output name from the iterated cita object -->
+                <span><%= citas[i].name %></span>:
+                <!-- Output cita from the iterated cita object -->
+                <span><%= citas[i].quote %></span>
+            </li>
+        <% } %>
+        </ul>
+
+
+        <div>
+            <h2>Hay un intruso!</h2>
+                <p>Cambia la primera cita de la lista con la del intruso</p>
+            <button id="update-button">Cambia la primera cita</button>
+        </div>
+
+        <div>
+            <h2>Echa al intruso!</h2>
+            <p>
+              Elimina la primera cita del intruso. No hace nada si no hay ninguna cita del intruso.
+            </p>
+            <button id="delete-button">Eliminar cita del intruso</button>
+        </div>
+
+        <div id="message"></div>
+
+
+        <script src="/main.js"></script>
+    </body>
+</html>
